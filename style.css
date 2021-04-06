@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 62.5%;
+}
+
 
 body{
     background-color: #1d4044;
@@ -23,7 +27,7 @@ a{
 header{
     display: flex;
     width: 100vw;
-    height: 350px;
+    height: 25rem;
     background-color: #38B2AC;
     
     flex-direction: column;
@@ -33,38 +37,47 @@ header{
 
 }
 
+header img {
+    height: 15.8rem;
+    width: 60rem;
+}
+
 header form{
     display: flex;
-    gap: 12px;
+    gap: 1.2rem;
     text-align: center;
     align-items: center;
+
+    margin-bottom: 1rem;
 }
 
 header form input{
-    width: 300px;
-    height: 30px;
-    padding: 21px;
+    width: 30rem;
+    height: 2rem;
+    padding: 1.8rem;
 
-    border-radius: 5px;
+    border-radius: 0.5rem;
 
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
 
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-family: 'Ubuntu';
 }
 
 header form button {
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 1rem 2rem;
+    border-radius: 4rem;
     border: none;
+    outline: 0;
+    cursor: pointer;
 
     background-color: #1D4044;
 
     color: white;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-family: 'Ubuntu';
 }
 
@@ -78,47 +91,62 @@ main {
 
 .card {
     display: flex;
-    margin-top: 20px;
-    padding: 40px;
-    border-radius: 10px;
-    gap: 40px;
+    margin-top: 3rem;
+    padding: 3rem;
+    border-radius: 1rem;
+    gap: 4rem;
 
     background-color: #E6FFFA;
 }
 
 .card .image-box img{
-    border: 10px solid #38B2AC;
+    border: 1rem solid #38B2AC;
     border-radius: 50%;
+
+    height: 15.4rem;
+    width: 15.4rem;
 }
 
 .card .user-info{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    min-width: 30rem;
 }
 
 .card .name{
-    font-size: 24px;
-    margin-left: -30px;
+    font-size: 2rem;
+    margin-left: -2.5rem;
 }
 
 .card .link{
-    font-size:20px;
-    margin-left: -15px;
+    font-size:1.5rem;
+    margin-left: -1.5rem;
 }
 
 .card .fol-rep{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    margin-left: -25px;
+    margin-left: -6.5rem;
+}
+
+.card .followers{
+    font-size: 1.4rem;
+}
+
+.card .repositories{
+    font-size: 1.4rem;
 }
 
 .card .new-rep{
-    font-size: 24px;
-    width: 400px;
+    font-size: 1.8rem;
+}
+
+.card .new-rep h2{
+    margin-top: 2rem;
 }
 
 .card .new-rep ul{
-    margin: 10px 0 0 50px;
+    margin: 1rem 0 0 5rem;
 }
