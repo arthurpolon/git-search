@@ -1,5 +1,17 @@
 const input = document.querySelector('input')
 const form = document.querySelector('form')
+const card = document.querySelector('.card')
+
+const name = document.querySelector('div.name > h2')
+const image = document.querySelector('div.image-box > img')
+const link = document.querySelector('div.link > a')
+const followers = document.querySelector('div.followers > h3')
+const repositories = document.querySelector('div.repositories > h3')
+const ul = document.querySelector('div.new-rep > ul')
+const h2 = document.querySelector('div.new-rep > h2')
+
+const elementsToHide = [image, link, followers, repositories, ul, h2]
+
 
 async function getData(){
 
@@ -20,48 +32,51 @@ async function orderRepos(){
     return orderedRepos
 }
 
-async function renderResult (){
-    const data = await getData()
+async function renderRepos(){
+    ul.innerHTML = ""
     const orderedRepos = await orderRepos()
+    if(orderedRepos.length == 0){
+        h2.innerText = "This user has no repositories"
+    }else{
+        h2.innerText = "Newest Repositories:"
+        repos = orderedRepos.slice(0, 4)
+        repos.forEach((repo) => {
+            const li = document.createElement('li')
+            const a = document.createElement('a')
+            a.href = repo.html_url
+            a.target = '_blank'
+            a.innerText = repo.name
 
-    document.querySelector('main').innerHTML = `
-    <div class="card">
-            <div class="image-box">
-                <img src="${data.avatar_url}" alt="profile image">
-            </div>
-            <div class="user-info">
-                    <div class="name-link">
-                        <div class="name">
-                            <h2>${data.name}</h2>
-                        </div>
-                        <div class="link">
-                            <a href="${data.html_url}" target="_blank"> ${data.html_url} </a>
-                        </div>
-                    </div>
+            li.appendChild(a)
+            ul.appendChild(li)
+        })
+    }
+}
 
-                    <div class="fol-rep">
-                        <div class="followers">
-                            <h3> Followers: ${data.followers} </h3>
-                        </div>
-                        <div class="repositories">
-                            <h3>Repositories: ${data.public_repos}</h3>
-                        </div>
-                    </div>
-            </div>
-            <div class="new-rep">
-                <h2>Newest Repositories:</h2>
-                <ul>
-                    <li><a href="${orderedRepos[0].html_url}" target="_blank">${orderedRepos[0].name}</a></li>
-                    <li><a href="${orderedRepos[1].html_url}" target="_blank">${orderedRepos[1].name}</a></li>
-                    <li><a href="${orderedRepos[2].html_url}" target="_blank">${orderedRepos[2].name}</a></li>
-                </ul>
-            </div>
-        </div>
-    `
+async function renderResult (){
+    card.classList.remove('visible')
+
+    try{
+        const data = await getData()
+
+        name.innerText = data.name
+        image.src = data.avatar_url
+        link.href = data.html_url
+        link.innerText = data.html_url
+        followers.innerText = "Followers: " + data.followers
+        repositories.innerText = "Repositories: " + data.public_repos
+
+        await renderRepos()
+        elementsToHide.forEach((element) => element.style.display = 'block')
+
+    }catch{
+        name.innerText = 'User Not Found'
+        elementsToHide.forEach((element) => element.style.display = 'none')
+    }
+    card.classList.add('visible')
 }
 
 form.addEventListener('submit', function(e){
     e.preventDefault()
-    renderResult()
 })
 

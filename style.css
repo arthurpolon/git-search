@@ -98,6 +98,16 @@ main {
     gap: 4rem;
 
     background-color: #E6FFFA;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.card.visible{
+    opacity: 1;
+    visibility: visible;
+
+    transition: opacity 1s;
 }
 
 .card .image-box img{
@@ -118,6 +128,7 @@ main {
 .card .name{
     font-size: 2rem;
     margin-left: -2.5rem;
+    margin-bottom: 1rem;
 }
 
 .card .link{
