@@ -67,6 +67,7 @@ header form input{
 }
 
 header form button {
+    width: 100%;
     padding: 1rem 2rem;
     border-radius: 4rem;
     border: none;
@@ -149,4 +150,66 @@ main {
 
 .card .new-rep ul{
     margin: 1rem 0 0 5rem;
+}
+
+
+@media(max-width: 870px){
+    html{
+        font-size: 40%;
+        width: 100vw;
+    }
+
+    header{
+        width: 100%;
+        padding: 10rem
+    }
+
+    header img{
+        width: 40rem;
+    }
+    .card{
+        flex-direction: column;
+    }
+
+    .card .name{
+        max-width: 220px;
+        text-align: center;
+
+        margin-bottom: 1rem;
+    }
+
+    .image-box{
+        display: flex;
+        justify-content: center;
+    }
+
+    .user-info {
+        align-items: center;
+    }
+
+    .user-info .name {
+        margin-left: 0;
+    }
+
+    .user-info .link {
+        display: flex;
+        justify-content: center;
+    }
+
+    .user-info .fol-rep{
+        margin-top: 2rem;
+        margin-left: 0;
+        justify-content: space-between;
+        width: 75%;
+    }
+
+    .card .new-rep {
+        max-width: 255px;
+    }
+
+    .card .new-rep li{
+        margin-bottom: 1rem;
+        font-size: 2rem;
+    }
+ 
 }
